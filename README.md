@@ -1,138 +1,92 @@
-Tabii ki! Aşağıda, geliştirdiğimiz web indirici script'in çeşitli senaryolarda nasıl kullanılacağını gösteren örnek komutlar yer almaktadır. Bu örnekler, script'in esnekliğini ve farklı parametrelerle nasıl çalıştığını anlamanıza yardımcı olacaktır.
 
-### 1. **Basit Kullanım**
+### `README.md`
 
-Belirtilen URL'deki web sitesini varsayılan ayarlarla indirir ve "indirilen_site" dizinine kaydeder.
+```markdown
+# WebSiteFetcher v1.0
 
-```bash
-python web_indirici.py "http://example.com"
-```
+## Açıklama
 
-### 2. **Belirli Bir Dizin İçine İndirme**
+**WebSiteFetcher** v1.0, belirli bir web sitesini tarayıp, HTML içeriği ve diğer kaynak dosyalarını (görseller, scriptler, stiller vb.) yerel bir dizine indirmenizi sağlayan bir Python uygulamasıdır. Beta sürümünde kullanılabilir, ancak Pro sürümü ücretlidir.
 
-Belirtilen URL'deki web sitesini "my_website" dizinine indirir.
+## Özellikler
 
-```bash
-python web_indirici.py "http://example.com" --dir my_website
-```
+- Web sitesinin tamamını veya belirli derinliklere kadar tarama
+- HTML sayfalarını ve ilgili kaynakları indirme
+- Kesintiye uğrayan indirmeleri devam ettirme desteği
+- İndirme sürecinde günlük kaydı ve hata raporlama
+- Farklı dosya türleri için genişletilmiş destek
 
-### 3. **Tarama Derinliğini Ayarlama**
+## Gereksinimler
 
-Script'in bağlantıları takip ederek daha derine inmesini sağlar. Bu örnekte, maksimum 2 seviye derinliğe kadar tarama yapılır.
+- Python 3.6 veya üzeri
 
-```bash
-python web_indirici.py "http://example.com" --depth 2
-```
+## Kurulum
 
-### 4. **İstekler Arası Gecikme Süresi Belirleme**
+1. Projeyi klonlayın veya indirin:
 
-İstekler arasında 2 saniye bekleyerek tarama yapar. Bu, sunucu üzerindeki yükü azaltabilir.
+    ```bash
+    git clone https://github.com/username/web-site-fetcher.git
+    cd web-site-fetcher
+    ```
 
-```bash
-python web_indirici.py "http://example.com" --delay 2
-```
+2. Gerekli Python kütüphanelerini yükleyin:
 
-### 5. **Özel User-Agent Kullanma**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-Belirli bir User-Agent belirterek istek gönderir. Bu, bazı web sitelerinin daha az kısıtlama uygulamasına neden olabilir.
+## Kullanım
 
-```bash
-python web_indirici.py "http://example.com" --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-```
-
-### 6. **Rastgele User-Agent Kullanma**
-
-Her istek için rastgele bir User-Agent kullanır. Bu, tespit edilme olasılığını azaltabilir.
+Programı çalıştırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```bash
-python web_indirici.py "http://example.com" --random-user-agent
+python web_site_fetcher.py [URL] [OPTIONS]
 ```
 
-### 7. **Proxy Kullanarak İndirme**
+### Seçenekler
 
-Bir proxy sunucusu üzerinden istek gönderir. Bu, kimliğinizi gizlemek veya bölgesel kısıtlamaları aşmak için kullanılabilir.
+- `-d`, `--dir`: Dosyaların kaydedileceği dizin (varsayılan: `downloaded_site`)
+- `--delay`: İstekler arasında bekleme süresi (saniye cinsinden)
+- `--depth`: Maksimum tarama derinliği
+- `--user-agent`: Özel User-Agent
+- `--chunk-size`: İndirme parçası boyutu (bayt cinsinden)
+- `--timeout`: İndirme istekleri için zaman aşımı (saniye cinsinden)
+- `--retries`: Başarısız indirmeler için yeniden deneme sayısı
+- `--retry-delay`: Yeniden denemeler arasındaki gecikme (saniye cinsinden)
+- `--resume`: Kesintiye uğrayan indirmeleri devam ettirme
+- `--log-file`: Günlük dosyası yolu
+- `--verbose`, `-v`: Ayrıntılı çıktı
+- `--all`: Her türlü dosyayı indirme
+
+## Örnek
 
 ```bash
-python web_indirici.py "http://example.com" --proxy http://proxyserver:port
+python web_site_fetcher.py https://example.com --depth 2 --all
 ```
 
-### 8. **SSL Sertifikası Doğrulamasını Atlamak**
+Bu komut, `https://example.com` adresindeki siteyi 2 derinlik seviyesine kadar tarar ve tüm dosyaları indirir.
 
-SSL sertifikası doğrulamasını atlar. Bu, güvenli olmayan veya kendinden imzalı sertifikalara sahip siteleri indirirken işe yarar.
+## Katkıda Bulunma
 
-```bash
-python web_indirici.py "http://example.com" --no-verify-ssl
+Herhangi bir katkıda bulunmak istiyorsanız, lütfen bir çekme isteği (pull request) açın veya bir sorun raporlayın.
+
+## Lisans
+
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
 ```
 
-### 9. **Maksimum Dosya Boyutunu Belirleme**
+### `requirements.txt`
 
-Maksimum dosya boyutunu 10 MB ile sınırlar. Daha büyük dosyalar indirilmeyecektir.
-
-```bash
-python web_indirici.py "http://example.com" --max-size 10
+```plaintext
+requests==2.28.2
+beautifulsoup4==4.12.2
+tqdm==4.65.0
 ```
 
-### 10. **Belirli Dosya Türlerini İndirme**
+### Açıklamalar:
+- **Proje Adı**: `WebSiteFetcher` olarak belirledim. Bu ad, projenin amacını açıkça belirtir ve genel bir adlandırma yapar.
+- **Versiyon**: `v1.0`, projenin ilk sürümünü temsil eder. Bu versiyon numarasını projenizin gelişimine göre güncelleyebilirsiniz.
+- **README.md**: Projenin adı, açıklaması, özellikleri, kurulum ve kullanım bilgilerini içerir.
+- **requirements.txt**: Projeyi çalıştırmak için gereken Python kütüphanelerini belirtir.
 
-Sadece CSS, JS, ve resim dosyalarını (.png, .jpg) indirir. Bu, belirli türdeki içerikleri filtrelemek için kullanışlıdır.
-
-```bash
-python web_indirici.py "http://example.com" --include-types .css,.js,.png,.jpg
-```
-
-### 11. **Zaman Aşımı Ayarlama**
-
-Her istek için maksimum 15 saniye bekler. Bu süre zarfında yanıt alamazsa bağlantıyı sonlandırır.
-
-```bash
-python web_indirici.py "http://example.com" --timeout 15
-```
-
-### 12. **Çerez Kullanımı**
-
-Belirli çerezleri göndererek istek yapar. Bu, oturum açmayı gerektiren siteler için faydalıdır.
-
-```bash
-python web_indirici.py "http://example.com" --cookies "sessionid=12345; csrftoken=abcdef"
-```
-
-### 13. **Yeniden Deneme Sayısını Ayarlama**
-
-Bağlantı hataları veya sunucu yanıt vermediğinde 5 defa yeniden denemeye çalışır.
-
-```bash
-python web_indirici.py "http://example.com" --retry 5
-```
-
-### 14. **Eşzamanlı İndirme İş Parçacıklarını Ayarlama**
-
-10 iş parçacığı kullanarak eşzamanlı indirme yapar. Bu, indirmenin daha hızlı tamamlanmasına yardımcı olur.
-
-```bash
-python web_indirici.py "http://example.com" --threads 10
-```
-
-### Tüm Bu Örnekleri Kombine Etme
-
-Aşağıdaki komut, bir dizi özelliği birleştirerek daha karmaşık bir senaryo oluşturur:
-
-```bash
-python web_indirici.py "http://example.com" --dir my_website --depth 3 --delay 1 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" --random-user-agent --proxy http://proxyserver:port --no-verify-ssl --max-size 10 --include-types .css,.js,.png,.jpg --timeout 10 --cookies "sessionid=12345" --retry 3 --threads 5
-```
-
-### Açıklamalar
-
-- **`--dir`**: İndirilen siteyi kaydedeceğiniz dizin.
-- **`--depth`**: Takip edilecek bağlantıların derinliği.
-- **`--delay`**: İstekler arasındaki bekleme süresi.
-- **`--user-agent`** ve **`--random-user-agent`**: Belirli veya rastgele User-Agent ile istek gönderme.
-- **`--proxy`**: Proxy sunucusu kullanarak istek gönderme.
-- **`--no-verify-ssl`**: SSL doğrulamasını atlama.
-- **`--max-size`**: İndirilecek dosyaların maksimum boyut sınırı (MB).
-- **`--include-types`**: Sadece belirtilen dosya türlerini indirme.
-- **`--timeout`**: Her istek için maksimum bekleme süresi (saniye).
-- **`--cookies`**: İsteklerde kullanılacak çerezler.
-- **`--retry`**: Başarısız istekler için yeniden deneme sayısı.
-- **`--threads`**: Eşzamanlı çalışan iş parçacığı sayısı.
-
-
+Başka bir şey eklemek veya değiştirmek isterseniz, lütfen bana bildirin!
