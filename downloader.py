@@ -150,7 +150,26 @@ def parse_and_download(url, base_url, save_dir, visited, delay, max_depth, curre
 
     time.sleep(delay)
 
+def print_banner():
+    """Print the banner and additional information."""
+    banner = """
+    .->   (`-')  _  (`-') (`-').-<-. (`-')_<-.(`-') (`-')  <-. (`-')_ 
+    (`(`-')/`)( OO).-<-.(OO ) ( OO)_    \( OO) )__( OO) ( OO).-/  \( OO) )
+    ,-`( OO).'(,------,------,(_)--\_),--./ ,--/'-'---.\(,------,--./ ,--/ 
+    |  |\\  |  ||  .---|   /`. /    _ /|   \\ |  || .-. (/ |  .---|   \\ |  | 
+    |  | '.|  (|  '--.|  |_.' \\_..`--.|  . '|  || '-' `.(|  '--.|  . '|  |)
+    |  |.'.|  ||  .--'|  .   ..-._)   |  |\\    || /`'.  ||  .--'|  |\\    | 
+    |   ,'.   ||  `---|  |\\  \\\\       |  | \\   || '--'  /|  `---|  | \\   | 
+    `--'   '--'`------`--' '--'`-----'`--'  `--'`------' `------`--'  `--' 
+    Web Site Downloader - Beta Version
+    Pro version is paid
+    Created by IbrahimSQL
+    """
+    print(banner)
+
 def main():
+    print_banner()
+
     parser = argparse.ArgumentParser(description='Web Site Downloader')
     parser.add_argument('url', help='Target website URL')
     parser.add_argument('-d', '--dir', default='downloaded_site', help='Directory to save files')
