@@ -1,3 +1,7 @@
-requests==2.31.0
+
+### `requirements.txt`
+
+```plaintext
+requests==2.28.2
 beautifulsoup4==4.12.2
 tqdm==4.65.0
